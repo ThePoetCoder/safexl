@@ -24,8 +24,11 @@ def is_excel_open() -> bool:
     :return: bool - Indicating whether or not Excel is open
     """
     for proc in psutil.process_iter():
-        if proc.name() == EXCEL_PROCESS_NAME:
-            return True
+        try:
+            if proc.name() == EXCEL_PROCESS_NAME:
+                return True
+        except psutil.AccessDenied:
+            pass
     return False
 
 
@@ -39,8 +42,11 @@ def excel_open_files() -> list:
     """
     result = []
     for proc in psutil.process_iter():
-        if proc.name() == EXCEL_PROCESS_NAME:
-            result.extend([popenfile.path for popenfile in proc.open_files()])
+        try:
+            if proc.name() == EXCEL_PROCESS_NAME:
+                result.extend([popenfile.path for popenfile in proc.open_files()])
+        except psutil.AccessDenied:
+            pass
     return result
 
 
@@ -57,12 +63,13 @@ def kill_all_instances_of_excel(app: 'win32com.client.Dispatch("Excel.Applicatio
         del app
 
     for proc in psutil.process_iter():
-        if proc.name() == EXCEL_PROCESS_NAME:
-            try:
+        try:
+            if proc.name() == EXCEL_PROCESS_NAME:
                 proc.kill()
-            except psutil.NoSuchProcess:
-                # Avoid erroring out if race conditions close Excel *between* finding it and killing it with psutil
-                pass
+        except (psutil.AccessDenied, psutil.NoSuchProcess):
+            # passing on psutil.NoSuchProcess avoids erroring out if race conditions
+            # close Excel *between* finding it and killing it with psutil
+            pass
 
 
 def new_workbooks(app: 'win32com.client.Dispatch("Excel.Application")', workbooks_open_at_onset: iter) -> list:
