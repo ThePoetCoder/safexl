@@ -8,4 +8,4 @@ import safexl.colors as colors
 __author__ = "Eric Smith"
 __email__ = "ThePoetCoder@gmail.com"
 __license__ = "MIT"
-__version__ = "0.1"
+__version__ = "0.0.7"
