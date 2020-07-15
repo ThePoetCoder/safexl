@@ -19,7 +19,7 @@ You can import the library with pip:
 ```cmd
 pip install safexl
 ```
-Or you can download it [here](github.com/ThePoetCoder/safexl) at GitHub.
+Or you can download it [here](https://github.com/ThePoetCoder/safexl) at GitHub.
 
 This module requires:
 * [pywin32](https://pypi.org/project/pywin32/)
@@ -235,4 +235,4 @@ with safexl.application(kill_after=False) as app:
 * [XlsxWriter](https://xlsxwriter.readthedocs.io/)
 
 ## Contact Me
-* [Email](mailto:ThePoetCoder@gmail.com)
+* ThePoetCoder at gmail.com
