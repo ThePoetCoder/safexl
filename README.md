@@ -7,7 +7,7 @@ but includes many oddities usually learned through trial and error, as seen in S
 * [Loading addins when Excel is instantiated programmatically](https://stackoverflow.com/questions/213375/loading-addins-when-excel-is-instantiated-programmatically)
 * [AutoFilter method of Range class failed (Dispatch vs EnsureDispatch)](https://stackoverflow.com/questions/22930751/autofilter-method-of-range-class-failed-dispatch-vs-ensuredispatch)
 
-My experience with automating Excel using pywin32 lead me to create `safexl`, a pywin32 wrapper centered around easier use and 
+My experience with automating Excel using pywin32 led me to create `safexl`, a pywin32 wrapper centered around easier use and 
 automated cleanup of Excel Application COM objects in Python. The main functionality of this package is a context-managed 
 `application` generator that you can use inside a `with` block, built with some pywin32 best practices in place and a few psutil 
 tools focused on working with Excel.
