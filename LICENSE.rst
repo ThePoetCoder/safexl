@@ -1,4 +1,4 @@
-This software is under the MIT Licence
+This software is under the MIT License
 ======================================
 
 Copyright (c) 2020 Eric Smith
